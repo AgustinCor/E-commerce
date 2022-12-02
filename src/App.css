@@ -3,6 +3,46 @@
   text-align: center;
 }
 
+.login-container{
+  width: 100vw;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-form{
+  background-color: rgb(226, 126, 126);
+  border-radius: 40px;
+  padding: 50px;
+}
+
+.login-form label{
+  color: #000;
+}
+
+.text-muted{
+  color: #000;
+  
+}
+
+li{
+  list-style: none;
+}
+
+.product-quantity{
+  margin: 50px 0;
+}
+
+.product-name-cart{
+  margin: 20px;
+}
+
+.total-price{
+  display: flex;
+  justify-content:space-between;
+}
+
 .prod-container{
   display: flex;
   flex-direction: column;
@@ -19,9 +59,20 @@
   justify-content: center;
 }
 
+
+.purchase-product-link{
+  text-decoration: none;
+}
+
 p{
   width: 600px;
   text-align: center;
+}
+
+.check-button{
+  position: fixed;
+  margin: 20px;
+  bottom: 0;
 }
 
 .spinner-overlay{

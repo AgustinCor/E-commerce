@@ -11,6 +11,7 @@ import {
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { createCartThunk } from "../store/slices/cart.slice";
 import {
   filterNameThunk,
   filterProductThunk,
@@ -24,6 +25,7 @@ const Home = () => {
   const [categoriesList, setCategoriesList] = useState([]);
   const [inputSearch, setInputSearch] = useState("");
 
+ 
   useEffect(() => {
     dispatch(getProductsThunk());
     axios
@@ -32,10 +34,20 @@ const Home = () => {
   }, []);
 
 
+  const addToCart =()=>{
+    const productObject = {
+      id:products.id,
+      quantity:1
+  }
+   //dispatch(createCartThunk(productObject ))
+   console.log(productObject)
+  }
+
+
   return (
     <div>
       <h1 style={{ marginTop: 40 }}>Choice your favorite product</h1>
-      <Row xs={4} md={1} >
+      <Row xs={4} md={1}>
         <Container className="my-4">
           {categoriesList.map((category) => (
             <Button
@@ -62,16 +74,17 @@ const Home = () => {
       <Row xs={1} md={4} className="g-4">
         {products.map((product) => (
           <Col key={product.id}>
-            <Card style={{padding:20,height: 400}}>
+            <Card style={{ padding: 10, height: 400 }}>
+            <Card.Body style={{ padding: 10}}>
               <Link to={`/product/${product.id}`}>
                 <Card.Img
                   variant="top"
                   src={product.productImgs[0]}
-                  style={{ height: 300, objectFit: "contain" }}
+                  style={{ height: 200, objectFit: "contain" }}
                 />
               </Link>
-              <Card.Body>
-                <Card.Title>{product.title}</Card.Title>
+              <Card.Title style={{margin:20}}>{product.title}</Card.Title>
+              <Button onClick={addToCart}>Add to cart</Button>
               </Card.Body>
             </Card>
           </Col>
