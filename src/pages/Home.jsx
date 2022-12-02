@@ -34,13 +34,13 @@ const Home = () => {
   }, []);
 
 
-  const addToCart =()=>{
+  const addToCart =(id)=>{
     const productObject = {
-      id:products.id,
+      id,
       quantity:1
   }
-   //dispatch(createCartThunk(productObject ))
-   console.log(productObject)
+   dispatch(createCartThunk(productObject ))
+  //  console.log(productObject)
   }
 
 
@@ -71,7 +71,7 @@ const Home = () => {
           Search
         </Button>
       </InputGroup>
-      <Row xs={1} md={4} className="g-4">
+      <Row xs={1} md={3} lg={4} className="g-4">
         {products.map((product) => (
           <Col key={product.id}>
             <Card style={{ padding: 10, height: 400 }}>
@@ -83,8 +83,10 @@ const Home = () => {
                   style={{ height: 200, objectFit: "contain" }}
                 />
               </Link>
-              <Card.Title style={{margin:20}}>{product.title}</Card.Title>
-              <Button onClick={addToCart}>Add to cart</Button>
+              <div style={{height:100}}>
+                <Card.Title style={{margin:20 , objectFit: "contain"}}>{product.title}</Card.Title>
+              </div>
+              <Button onClick={() => addToCart(product.id)}>Add cart</Button>
               </Card.Body>
             </Card>
           </Col>

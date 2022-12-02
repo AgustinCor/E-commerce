@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Card, Col, Container, ListGroup, Row } from "react-bootstrap";
+import { Button, Card, Carousel, Col, Container, ListGroup, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { createCartThunk } from "../store/slices/cart.slice";
@@ -39,10 +39,33 @@ const ProductDetail = () => {
     <div>
       <Container className="prod-container" style={{marginTop:90 ,marginBottom:120}}>
           <h2>{productsFound?.title}</h2>
-          <img style={{ width: 300 }} src={productsFound?.productImgs[0]} alt="" />
+          <Carousel>
+            <Carousel.Item>
+              <Card.Img
+                 src={productsFound?.productImgs[0]}
+                 style={{height:400, objectFit: "contain" }}
+                  alt=""
+                    /> 
+            </Carousel.Item>
+            <Carousel.Item>
+              <Card.Img
+                 src={productsFound?.productImgs[1]}
+                 style={{height:400, objectFit: "contain" }}
+                  alt=""
+                    /> 
+            </Carousel.Item>
+            <Carousel.Item>
+              <Card.Img
+                 src={productsFound?.productImgs[2]}
+                 style={{height:400, objectFit: "contain" }}
+                  alt=""
+                    /> 
+            </Carousel.Item>
+         </Carousel>
           <p>{productsFound?.description}</p>
       </Container>
       <div className="product-quantity">
+        <i className="fa-solid fa-cart-shopping"></i>
         <input type= "text"
         value={input}
         onChange={e => setInput(e.target.value)} 
@@ -50,6 +73,7 @@ const ProductDetail = () => {
         <Button style={{marginLeft:10,borderRadius:30}} onClick={addToCart}>
           Add Cart
         </Button>
+        
       </div>
       <ListGroup className="options-holder" horizontal style={{gap:20}}>
         {relatedProducts.map((product) => (

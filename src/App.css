@@ -3,6 +3,12 @@
   text-align: center;
 }
 
+.fa-cart-shopping{
+  font-size: 40px;
+  margin: 10px;
+  color: rgb(98, 165, 210);
+}
+
 .login-container{
   width: 100vw;
   height: 50vh;
@@ -31,6 +37,9 @@ li{
 }
 
 .product-quantity{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 50px 0;
 }
 
@@ -62,6 +71,11 @@ li{
 
 .purchase-product-link{
   text-decoration: none;
+}
+
+.span-price{
+  font-weight: 1000;
+  margin:0 20px ;
 }
 
 p{

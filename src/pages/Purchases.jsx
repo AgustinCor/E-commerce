@@ -16,6 +16,11 @@ const Purchases = () => {
     dispatch(getPurchasesThunk())
   },[])
 
+  const getFormateDate=(dateString) =>{
+    const date =new Date(dateString);
+    
+  }
+
 
     return (
       <div>

@@ -33,6 +33,12 @@ export const checkoutCartThunk = () => (dispatch) => {
         .then(() => dispatch(setCart([])))
         .finally(() => dispatch(setIsLoading(false)));
 }
+export const deleteCartThunk = (id) => (dispatch) => {
+    dispatch(setIsLoading(true));
+    return axios.delete(`https://e-commerce-api.academlo.tech/api/v1/cart/${id}`,getConfig())
+        .then(() => dispatch(getCartThunk()))
+        .finally(() => dispatch(setIsLoading(false)));
+}
 
 export const { setCart } = cartSlice.actions;
 
